@@ -15,25 +15,21 @@ public class DirectoryEditor {
 	public final static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in); 
-		String next; 
-		String[] line;
+		String next;
 
+		
 		do {
 			System.out.print("Enter a command (\"end\") to finish : ");
 
 			next = input.nextLine();
-			line = next.split(" ");
 
-			if (line[0].equalsIgnoreCase("add")) {
-				List<String> commandLines = getCommands(line[1]);
-				for (String commandLine : commandLines) {
-					controller.add(commandLine.toUpperCase());
-				}
+			if (next.equalsIgnoreCase("add")) {
+				controller.add(input.nextLine());
 			}
-			else if (line[0].equalsIgnoreCase("clear")) {
+			else if (next.equalsIgnoreCase("clear")) {
 				controller.clear();
 			}
-			else if (line[0].equalsIgnoreCase("print")) {
+			else if (next.equalsIgnoreCase("print")) {
 				controller.print();
 			}
 		} while (!next.equalsIgnoreCase("end"));
