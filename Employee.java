@@ -1,18 +1,18 @@
 
 public class Employee {
-	public String firstn;
-	public String lastn;
-	public String phone;
+	public String fname;
+	public String lname;
+	public int phone;
 	public String department;
 	
-	public Employee (String first, String last, String phonen, String dep) {
-		firstn = first;
-		lastn = last;
+	public Employee (String first, String last, String dep, int phonen) {
+		fname = first;
+		lname = last;
 		phone = phonen;
 		department = dep;
 	}
 	
 	public String toString () {
-		return lastn + ", " + firstn + " " + phone + " " + department;
+		return lname + ", " + fname + " " + phone + " " + department;
 	}
 }
