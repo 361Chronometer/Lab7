@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 
 public class MainDirectory {
-	ArrayList<Employee> emps = new ArrayList<Employee>();
+	static ArrayList<Employee> emps = new ArrayList<Employee>();
 	
-	public void add(Employee e){
+	public static void add(Employee e){
 		for(int i = 0; i < emps.size(); ++i){
 			if(e.lname.charAt(0) < emps.get(i).lname.charAt(0)){
 				emps.add(i, e);
@@ -22,14 +22,14 @@ public class MainDirectory {
 		}
 		emps.add(e);
 	}
-	public void add(String fname, String lname, String department, int phone){
+	public static void add(String fname, String lname, String department, int phone){
 		if(fname.equalsIgnoreCase("add") || fname.equalsIgnoreCase("end") || fname.equalsIgnoreCase("print") || fname.equalsIgnoreCase("clr")){
 			return;
 		}
 		Employee e = new Employee(fname,lname,department,phone);
 		add(e);
 	}
-	public void add(String in){//commas?order?
+	public static void add(String in){//commas?order?
 		String fname = "";
 		String lname = "";
 		String department = "";
@@ -63,7 +63,7 @@ public class MainDirectory {
 		
 	}
 	
-	public void print(){
+	public static void print(){
 		if(emps.get(0) == null){
 			System.out.println("Empty Directory");
 		}
@@ -72,7 +72,8 @@ public class MainDirectory {
 		}
 	}
 	
-	public void clear(){
+	public static void clear(){
 		emps = new ArrayList<Employee>();
 	}
 }
+
