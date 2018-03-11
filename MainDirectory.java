@@ -1,51 +1,25 @@
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 public class MainDirectory {
 	static ArrayList<Employee> emps = new ArrayList<Employee>();
 	
-	public static void add(Employee e){
-		for(int i = 0; i < emps.size(); ++i){
-			if(e.lname.charAt(0) < emps.get(i).lname.charAt(0)){
-				emps.add(i, e);
-				return;
-			}
-			else if (e.lname.charAt(0) == emps.get(i).lname.charAt(0)){
-				for(int j = 0; j <e.lname.length() && j < emps.get(i).lname.length(); ++j){
-					if(e.lname.charAt(j) < emps.get(i).lname.charAt(j)){
-						emps.add(i,e);
-						return;
-					}
-					emps.add(i+1, e);
-				}
-			}
-		}
-		emps.add(e);
-	}
-	public static void add(String fname, String lname, String department, String phone){
-		if(fname.equalsIgnoreCase("add") || fname.equalsIgnoreCase("end") || fname.equalsIgnoreCase("print") || fname.equalsIgnoreCase("clr")){
-			return;
-		}
-		Employee e = new Employee(fname,lname,department,phone);
-		add(e);
-	}
+	
 	public static void add(String in){//commas?order?
-		String fname = "";
-		String lname = "";
-		String department = "";
-		String phone = "";
-		
-		String[] names = in.split(" ");
-		
-		fname = names[0];
-		lname = names[1];
-		department = names[2];
-		phone = names[3];
-		if (fname != null && lname != null && department != null && phone != null) {
-			add (fname, lname, department, phone);
+		emps.clear();
+		Gson g = new Gson();
+		ArrayList<Employee> e = (g.fromJson(in,new TypeToken<Collection<Employee>>(){}.getType()));
+		for(int i = 0; i < e.size(); ++i) {
+			emps.add(i, e.get(i));
 		}
 		
+	
+		//print();
 	}
 	
 	public static void print(){
